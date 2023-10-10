@@ -1,7 +1,7 @@
 // A basic Node.js express server on port 3000
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = 3000;
 
 app.get('/', (req, res) => {
   res.send('Save the World!');

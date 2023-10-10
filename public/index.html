@@ -42,7 +42,7 @@
         </tbody>
     </table>
     <script>
-        fetch('http://localhost:8080/superheroes/all')
+        fetch('http://localhost:3000/superheroes/all')
             .then(response => response.json())
             .then(superheros => {
                 const tableBody = document.getElementById('superhero-table-body');
