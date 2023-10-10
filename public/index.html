@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Superhero Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Intelligence</th>
+                <th>Strength</th>
+                <th>Speed</th>
+                <th>Durability</th>
+                <th>Power</th>
+                <th>Combat</th>
+            </tr>
+        </thead>
+        <tbody id="superhero-table-body">
+        </tbody>
+    </table>
+    <script>
+        fetch('http://localhost:8080/superheroes/all')
+            .then(response => response.json())
+            .then(superheros => {
+                const tableBody = document.getElementById('superhero-table-body');
+                superheros.forEach(superhero => {
+                    const row = document.createElement('tr');
+                    const imageCell = document.createElement('td');
+                    const image = document.createElement('img');
+                    image.src = superhero.image;
+                    imageCell.appendChild(image);
+                    row.appendChild(imageCell);
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = superhero.name;
+                    row.appendChild(nameCell);
+                    const powerstats = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
+                    powerstats.forEach(stat => {
+                        const statCell = document.createElement('td');
+                        statCell.textContent = superhero.powerstats[stat];
+                        row.appendChild(statCell);
+                    });
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>

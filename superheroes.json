@@ -1,0 +1,41 @@
+[
+   {
+      "id":1,
+      "name":"A-Bomb",
+      "powerstats":{
+         "intelligence":38,
+         "strength":100,
+         "speed":17,
+         "durability":80,
+         "power":24,
+         "combat":64
+      },
+      "image":"https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/1-a-bomb.jpg"
+   },
+   {
+      "id":2,
+      "name":"Ant-Man",
+      "powerstats":{
+         "intelligence":100,
+         "strength":18,
+         "speed":23,
+         "durability":28,
+         "power":32,
+         "combat":32
+      },
+      "image":"https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/30-ant-man.jpg"
+   },
+   {
+      "id":3,
+      "name":"Bane",
+      "powerstats":{
+         "intelligence": 88,
+         "strength": 38,
+         "speed": 23,
+         "durability": 56,
+         "power": 51,
+         "combat": 95
+      },
+      "image": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/60-bane.jpg"
+   }
+]
