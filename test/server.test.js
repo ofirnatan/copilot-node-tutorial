@@ -1,39 +1,28 @@
-// Use supertest and Jest to test the following routes:
-// GET /superheroes/all
-// GET /superheroes/:id
-// GET /superheroes/:id/powerstats
-
-const app = require('../server');
 const request = require('supertest');
+const app = require('../server');
 
-/** RUN */
-
-// add functional test for GET /superheroes/all route using Jest
 describe('GET /superheroes/all', () => {
-  it('should return all superheroes', async () => {
-    const res = await request(app).get('/superheroes/all');
-    expect(res.statusCode).toEqual(200);
-    expect(res.body.length).toEqual(3);
-  });
+    it('should return 200 OK and number of returned items matches superheros.json', async () => {
+        const response = await request(app).get('/superheroes/all');
+        expect(response.status).toBe(200);
+        expect(response.body.length).toBe(require('../superheroes.json').length);
+    });
 });
 
-// add functional test for GET /superheroes/:id route using Jest
 describe('GET /superheroes/:id', () => {
-  it('should return superhero by id', async () => {
-    const res = await request(app).get('/superheroes/1');
-    expect(res.statusCode).toEqual(200);
-    expect(res.body.id).toEqual(1);
-  });
+    it('should return 200 OK and actual id of item is what was requested', async () => {
+        const id = 1; // Replace with the desired superhero id
+        const response = await request(app).get(`/superheroes/${id}`);
+        expect(response.status).toBe(200);
+        expect(response.body.id).toBe(id);
+    });
 });
 
-// add functional test for GET /superheroes/:id/powerstats route using Jest
 describe('GET /superheroes/:id/powerstats', () => {
-  it('should return superhero powerstats by id', async () => {
-    const res = await request(app).get('/superheroes/1/powerstats');
-    expect(res.statusCode).toEqual(200);
-    expect(res.body.intelligence).toEqual(38);
-  });
+    it('should return 200 OK and intelligence property matches item in superheros.json', async () => {
+        const id = 1; // Replace with the desired superhero id
+        const response = await request(app).get(`/superheroes/${id}/powerstats`);
+        expect(response.status).toBe(200);
+        expect(response.body.intelligence).toBe(require('../superheroes.json')[id - 1].powerstats.intelligence);
+    });
 });
-
-
-

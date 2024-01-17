@@ -2,6 +2,9 @@
 node_modules/
 npm-debug.log
 
+# generally should be comitted to repo, for this training we ignore
+package-lock.json
+
 # Docker
 .DS_Store
 
